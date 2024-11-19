@@ -27,7 +27,12 @@ public class FCFS implements IDiskAlgorithm {
 	public int calculateDistance(List<DiskRequest> requests, int headPosition) {
 		// TODO Auto-generated method stub
 
-
+		//while array insn't empty
+		//move by 1 until you get to first request.
+		//remove request from list
+		//add distance traveled to total head movement
+		//move by 1 until next number and repeat till no requests left.
+		//return total head movement at the end.
 
 
 

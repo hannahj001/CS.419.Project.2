@@ -28,6 +28,13 @@ public class CSCAN implements IDiskAlgorithm {
     @Override
     public int calculateDistance(List<DiskRequest> requests, int headPosition) {
         // TODO Auto-generated method stub
+        //while array insn't empty
+        //move by 1 until you get to first request.
+        //remove request from list
+        //add distance traveled to total head movement
+        //continue moving in same direction until hitting 4999
+        //now teleport back to 0 and restart with new new requests.
+        //dont forget to add back 4,999 to the head movement.
         return 0;
     }
 
