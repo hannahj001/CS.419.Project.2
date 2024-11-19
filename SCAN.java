@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,14 +62,15 @@ public class SCAN implements IDiskAlgorithm {
 				int requestCount = 0;
 				for (DiskRequest request : requests) {
 					requestCount += 1;
+					//System.out.printf("Request: %s, %s, count: %s\n",request.getTrack(),request.getTimeOfArrival(),requestCount);
 					if (request.getTimeOfArrival() < totalHeadMovement) {
 						if (headPosition == request.getTrack()) {
-							System.out.println("before");
-							requests.remove(requestCount);
-							System.out.println("after");
+							System.out.printf("FOUND REQUEST TO REMOVE: %s, %s, count: %s\n",request.getTrack(),request.getTimeOfArrival(),requestCount);
+
 						}
 					}
 				}
+
 			}
 			else{
 				headPosition -= 1;
