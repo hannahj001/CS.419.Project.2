@@ -19,12 +19,11 @@ import java.util.List;
  */
 public class FCFS implements IDiskAlgorithm {
 
-	private List<DiskRequest> queue;
 	private Integer totalHeadMovement = 0;
-	private Integer currentHeadPosition = 0;
 
 	@Override
 	public int calculateDistance(List<DiskRequest> requests, int headPosition) {
+		Integer size = requests.size();
 		// TODO Auto-generated method stub
 
 		//while array insn't empty
@@ -34,10 +33,21 @@ public class FCFS implements IDiskAlgorithm {
 		//move by 1 until next number and repeat till no requests left.
 		//return total head movement at the end.
 
+		// check when something gets here that we dont move until we need to
 
+		while(!requests.isEmpty()){
+			totalHeadMovement +=1;
+			if (headPosition > requests.getFirst().getTrack()){
+				headPosition -= 1;
 
-
-		return 0;
+			}else if (headPosition < requests.getFirst().getTrack()){
+				headPosition +=1;
+			}
+			else if(headPosition == requests.getFirst().getTrack()){
+				requests.removeFirst();
+			}
+		}
+		return totalHeadMovement - size;
 	}
 
 }

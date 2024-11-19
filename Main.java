@@ -11,7 +11,7 @@ public class Main {
 		requests1.add(new DiskRequest(7, 0));
 		
 		IDiskAlgorithm diskAlgorithm;
-		diskAlgorithm = new FCFS();
+		diskAlgorithm = new SCAN();
 		
 		System.out.println(diskAlgorithm.calculateDistance(requests1, 0));
 	}

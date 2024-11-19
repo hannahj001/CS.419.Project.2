@@ -37,9 +37,12 @@ import java.util.List;
  * @author ...
  */
 public class SCAN implements IDiskAlgorithm {
+	private Integer totalHeadMovement = 0;
+	private Boolean direction = true;
 
 	@Override
 	public int calculateDistance(List<DiskRequest> requests, int headPosition) {
+
 		// TODO Auto-generated method stub
 		//elevator
 		//while array insn't empty
@@ -49,7 +52,39 @@ public class SCAN implements IDiskAlgorithm {
 		//continue moving in same direction until hitting 4999
 		//now move to 0 stopping at requests.
 
-		return 0;
+
+		//DIRECTION true = up and false = down
+		while(!requests.isEmpty()){
+			totalHeadMovement += 1;
+			if(direction){
+				headPosition += 1;
+				int requestCount = 0;
+				for (DiskRequest request : requests) {
+					requestCount += 1;
+					if (request.getTimeOfArrival() < totalHeadMovement) {
+						if (headPosition == request.getTrack()) {
+							System.out.println("before");
+							requests.remove(requestCount);
+							System.out.println("after");
+						}
+					}
+				}
+			}
+			else{
+				headPosition -= 1;
+				int requestCount = 0;
+				for (DiskRequest request : requests) {
+					requestCount += 1;
+					if (request.getTimeOfArrival() < totalHeadMovement) {
+						if (headPosition == request.getTrack()) {
+							requests.remove(request);
+						}
+					}
+				}
+			}
+		}
+
+		return totalHeadMovement;
 	}
 
 
