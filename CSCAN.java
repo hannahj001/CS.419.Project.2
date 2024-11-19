@@ -10,8 +10,8 @@ import java.util.List;
  * the disk to the other, servicing requests along the way. When the head reaches
  * the other end, however, it immediately returns to the beginning of the disk
  * without servicing any requests on the return trip.
- * Let’s return to our example to illustrate. Before applying C-SCAN to sched-
- * ule the requests on cylinders 98, 183, 37, 122, 14, 124, 65, and 67, we need to
+ * Let’s return to our example to illustrate. Before applying C-SCAN to schedule
+ * the requests on cylinders 98, 183, 37, 122, 14, 124, 65, and 67, we need to
  * know the direction of head movement in which the requests are scheduled.
  * Assuming that the requests are scheduled when the disk arm is moving from
  * 0 to 199 and that the initial head position is again 53, the request will be served

@@ -29,7 +29,7 @@ import java.util.List;
  * this point, relatively few requests are immediately in front of the head, since
  * these cylinders have recently been serviced. The heaviest density of requests
  * is at the other end of the disk. These requests have also waited the longest, so
- * why not go there first? That is the idea of the next algorit
+ * why not go there first? That is the idea of the next algorithm
  *
  *
  *

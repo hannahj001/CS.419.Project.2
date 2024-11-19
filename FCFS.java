@@ -1,7 +1,7 @@
 import java.util.List;
 
 /**
- * This class will implement the First Come First Serve 
+ * This class will implement the First Come First Serve.
  * disk scheduling algorithm.
  *
  * FROM THE TEXT BOOK
@@ -19,9 +19,19 @@ import java.util.List;
  */
 public class FCFS implements IDiskAlgorithm {
 
+	private List<DiskRequest> queue;
+	private Integer totalHeadMovement = 0;
+	private Integer currentHeadPosition = 0;
+
 	@Override
 	public int calculateDistance(List<DiskRequest> requests, int headPosition) {
 		// TODO Auto-generated method stub
+
+
+
+
+
+
 		return 0;
 	}
 
