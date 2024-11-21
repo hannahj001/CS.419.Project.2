@@ -58,15 +58,15 @@ public class SCAN implements IDiskAlgorithm {
 		while(!requests.isEmpty()){
 			totalHeadMovement += 1;
 			if (headPosition == 4999)
+
 				direction = false;
-			else if (headPosition == 0)
+			if (headPosition == 0)
 				direction = true;
 			//System.out.println(headPosition);
 			//System.out.println(totalHeadMovement);
 
 			if(direction){
 				headPosition += 1;
-				int requestCount = 0;
 				for (int i = requests.size() - 1; i >= 0; i--) {
 					DiskRequest request = requests.get(i);
 					if (request.getTimeOfArrival() < totalHeadMovement && headPosition == request.getTrack()) {
@@ -77,13 +77,11 @@ public class SCAN implements IDiskAlgorithm {
 			}
 			else{
 				headPosition -= 1;
-				int requestCount = 0;
-				for (DiskRequest request : requests) {
-					requestCount += 1;
-					if (request.getTimeOfArrival() < totalHeadMovement) {
-						if (headPosition == request.getTrack()) {
-							//requests.remove(request);
-						}
+				for (int i = requests.size() - 1; i >= 0; i--) {
+					DiskRequest request = requests.get(i);
+					if (request.getTimeOfArrival() < totalHeadMovement && headPosition == request.getTrack()) {
+						System.out.printf("Request Removed: TA: %s, Track: %s\n", requests.get(i).getTimeOfArrival(), requests.get(i).getTrack());
+						requests.remove(i);
 					}
 				}
 			}
