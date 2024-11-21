@@ -24,6 +24,7 @@ import java.util.List;
 
 //
 public class CSCAN implements IDiskAlgorithm {
+    private Integer totalHeadMovement = 0;
 
     @Override
     public int calculateDistance(List<DiskRequest> requests, int headPosition) {
@@ -35,7 +36,30 @@ public class CSCAN implements IDiskAlgorithm {
         //continue moving in same direction until hitting 4999
         //now teleport back to 0 and restart with new new requests.
         //don't forget to add back 4,999 to the head movement.
-        return 0;
+
+
+        while(!requests.isEmpty()) {
+            totalHeadMovement += 1;
+            headPosition += 1;
+
+            if (headPosition == 4999){
+                headPosition = 0;
+                totalHeadMovement += 4999;
+            }
+
+            //System.out.println(headPosition);
+            //System.out.println(totalHeadMovement);
+
+            for (int i = requests.size() - 1; i >= 0; i--) {
+                DiskRequest request = requests.get(i);
+                if (request.getTimeOfArrival() < totalHeadMovement && headPosition == request.getTrack()) {
+                    System.out.printf("Request Removed: TA: %s, Track: %s\n", requests.get(i).getTimeOfArrival(), requests.get(i).getTrack());
+                    requests.remove(i);
+                }
+            }
+        }
+
+        return totalHeadMovement;
     }
 
 }
